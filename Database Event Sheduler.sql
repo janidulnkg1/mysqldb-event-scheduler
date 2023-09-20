@@ -4,7 +4,7 @@ DELIMITER //
 CREATE PROCEDURE RemoveOldData()
 BEGIN
     DECLARE cutoff_date DATETIME;
-    SET cutoff_date = DATE_SUB(NOW(), INTERVAL 2 MONTH);
+    SET cutoff_date = DATE_ADD(CURDATE(), INTERVAL -2 MONTH);
     
     DECLARE done INT DEFAULT FALSE;
     DECLARE db_name VARCHAR(255);
