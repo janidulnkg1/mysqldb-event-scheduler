@@ -9,7 +9,7 @@ BEGIN
     END;
 
     SET @base_date = 'YYYY-MM-DD';
-    SET @cutoff_date = DATE_ADD(@base_date, INTERVAL -2 MONTH);
+    SET @cutoff_date = DATE_ADD(@base_date, INTERVAL -1 MONTH);
     SET @db_name = 'dbName';
     SET @table_name = 'tblName';
 
