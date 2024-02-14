@@ -1,58 +1,35 @@
-SET GLOBAL event_scheduler = ON;
-
 DELIMITER //
-CREATE PROCEDURE RemoveOldData()
+
+CREATE PROCEDURE RemoveOldDatedData()
 BEGIN
-    DECLARE cutoff_date DATETIME;
-    SET cutoff_date = DATE_ADD(CURDATE(), INTERVAL -2 MONTH);
-    
-    DECLARE done INT DEFAULT FALSE;
-    DECLARE db_name VARCHAR(255);
-    DECLARE cur CURSOR FOR SHOW DATABASES;
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-    
-    OPEN cur;
-    
-    db_loop: LOOP
-        FETCH cur INTO db_name;
-        IF done THEN
-            LEAVE db_loop;
-        END IF;
-    
-        DECLARE done_tables INT DEFAULT FALSE;
-        DECLARE table_name VARCHAR(255);
-        DECLARE cur_tables CURSOR FOR
-            SELECT table_name
-            FROM information_schema.tables
-            WHERE table_schema = db_name;
-        DECLARE CONTINUE HANDLER FOR NOT FOUND SET done_tables = TRUE;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SELECT 'An error occurred!';
+    END;
+
+    SET @base_date = '2005-05-27';
+    SET @cutoff_date = DATE_ADD(@base_date, INTERVAL -1 MONTH);
+    SET @db_name = 'sakila';
+    SET @table_name = 'payment';
+    SET @column_date = 'payment_date'; -- Assigning 'DATET' to variable @column_date
+
+    IF EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @db_name) THEN
+        IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @db_name AND TABLE_NAME = @table_name) THEN
+            SET @sql = CONCAT('DELETE FROM ', @db_name, '.', @table_name, ' WHERE ', @column_date, ' < ''', @cutoff_date, '''');
         
-        OPEN cur_tables;
-        
-        table_loop: LOOP
-            FETCH cur_tables INTO table_name;
-            IF done_tables THEN
-                LEAVE table_loop;
-            END IF;
-    
-            SET @sql = CONCAT('DELETE FROM ', db_name, '.', table_name, ' WHERE DATET < "', DATE_FORMAT(cutoff_date, '%Y-%m-%d %H:%i:%s'), '"');
-            
             PREPARE stmt FROM @sql;
             EXECUTE stmt;
             DEALLOCATE PREPARE stmt;
-        END LOOP;
-        
-        CLOSE cur_tables;
-    END LOOP;
-    
-    CLOSE cur;
-    
+        ELSE
+            SELECT 'Table does not exist!';
+        END IF;
+    ELSE
+        SELECT 'Database does not exist!';
+    END IF;
 END //
+
 DELIMITER ;
 
-CREATE EVENT RemoveOldDataEvent
-ON SCHEDULE EVERY 1 DAY
-DO
-BEGIN
-    CALL RemoveOldData();
-END;
+
+CALL RemoveOldDatedData();
+
