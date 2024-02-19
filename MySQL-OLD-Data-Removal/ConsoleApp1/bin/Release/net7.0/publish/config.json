@@ -1,0 +1,30 @@
+{
+  "Serilog": {
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "Console"
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "C:\\QLogs\\MySQL-OldData-Removal\\log-.txt",
+          "rollingInterval": "Day",
+          "shared": true
+        }
+      }
+    ],
+    "Properties": {
+      "Application": "DataRemovalApp"
+    }
+  },
+  "DBConfig": {
+    "MySQLServerName": "localhost",
+    "MySQLUsername": "root",
+    "MySQLPassword": "QtX4300",
+    "DBName": "sakila",
+    "TableName": "payment",
+    "ColumnName": "payment_date",
+    "MonthsBefore": 2
+  }
+}

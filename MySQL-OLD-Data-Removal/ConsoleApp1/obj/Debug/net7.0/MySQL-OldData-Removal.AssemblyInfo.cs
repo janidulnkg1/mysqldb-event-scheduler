@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MySQL-OldData-Removal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccaff18939f041a2a43cd7030b9a1f849ed45f94")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18700d2aead7d0a75f932dd64c30901db8576968")]
 [assembly: System.Reflection.AssemblyProductAttribute("MySQL-OldData-Removal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MySQL-OldData-Removal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

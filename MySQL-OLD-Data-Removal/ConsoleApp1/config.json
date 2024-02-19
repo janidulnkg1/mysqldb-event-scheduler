@@ -25,7 +25,6 @@
     "DBName": "sakila",
     "TableName": "payment",
     "ColumnName": "payment_date",
-    "BaseDate": "2005-07-28",
     "MonthsBefore": 2
   }
 }
