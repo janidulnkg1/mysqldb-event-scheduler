@@ -28,8 +28,8 @@ namespace DataRemovalApp
                 {
                     connection.Open();
                     RemoveOldestData(connection, dbConfig);
-                    Log.Information("Oldest data removed successfully.");
-                    Console.WriteLine("Oldest data removed successfully.");
+                    Log.Information($"Data Older than {dbConfig.MonthsBefore} Month/s from {dbConfig.BaseDate} has been Deleted!");
+                    Console.WriteLine($"Data Older than {dbConfig.MonthsBefore} Month/s from {dbConfig.BaseDate} has been Deleted!");
                 }
                 catch (Exception ex)
                 {
@@ -67,16 +67,21 @@ namespace DataRemovalApp
 
         static string GetConnectionString(Config config)
         {
-            return $"Server=localhost;Database={config.DBName};Uid=root;Pwd=QtX4300;";
+            return $"Server={config.MySQLServerName};Database={config.DBName};Uid={config.MySQLUsername};Pwd={config.MySQLPassword};";
         }
     }
 
     class Config
     {
+        public string? MySQLServerName { get; set; }
+        public string? MySQLUsername { get; set; }
+        public string? MySQLPassword { get; set; }
         public string? DBName { get; set; }
         public string? TableName { get; set; }
         public string? ColumnName { get; set; }
         public DateTime BaseDate { get; set; }
         public int MonthsBefore { get; set; }
+
+        
     }
 }

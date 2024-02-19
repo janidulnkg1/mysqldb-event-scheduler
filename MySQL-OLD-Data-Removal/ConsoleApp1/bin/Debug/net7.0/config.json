@@ -19,10 +19,13 @@
     }
   },
   "DBConfig": {
+    "MySQLServerName": "localhost",
+    "MySQLUsername": "root",
+    "MySQLPassword": "QtX4300",
     "DBName": "sakila",
     "TableName": "payment",
     "ColumnName": "payment_date",
-    "BaseDate": "2005-07-07",
+    "BaseDate": "2005-07-28",
     "MonthsBefore": 2
   }
 }
