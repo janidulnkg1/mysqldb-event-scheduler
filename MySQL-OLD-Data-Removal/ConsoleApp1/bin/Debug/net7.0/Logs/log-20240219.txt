@@ -1,0 +1,15 @@
+2024-02-19 12:54:25.115 +05:30 [ERR] Error occurred
+MySql.Data.MySqlClient.MySqlException (0x80004005): This command is not supported in the prepared statement protocol yet
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQueryAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at DataRemovalApp.Program.CallStoredProcedure(MySqlConnection connection, Config config) in C:\Users\janid\Documents\GitHub\mysqldb-event-scheduler\MySQL-OLD-Data-Removal\ConsoleApp1\Program.cs:line 56
+   at DataRemovalApp.Program.Main(String[] args) in C:\Users\janid\Documents\GitHub\mysqldb-event-scheduler\MySQL-OLD-Data-Removal\ConsoleApp1\Program.cs:line 32

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQL-OldData-Removal", "ConsoleApp1\MySQL-OldData-Removal.csproj", "{2A54A449-F544-4726-9DD1-99E90D11190F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A54A449-F544-4726-9DD1-99E90D11190F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A54A449-F544-4726-9DD1-99E90D11190F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A54A449-F544-4726-9DD1-99E90D11190F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A54A449-F544-4726-9DD1-99E90D11190F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC733129-71B3-489B-9E5A-0E9FAE7FAF21}
+	EndGlobalSection
+EndGlobal

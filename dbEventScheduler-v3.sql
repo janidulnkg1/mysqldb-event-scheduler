@@ -31,7 +31,7 @@ DELIMITER ;
 
 
 
-CALL OldDataRemoval(''sakila', 'payment', 'payment_date', '2005-07-07', 2);
+CALL OldDataRemoval('sakila', 'payment', 'payment_date', '2005-07-07', 2);
 
 
 
