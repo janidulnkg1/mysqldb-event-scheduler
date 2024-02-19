@@ -40,17 +40,29 @@ namespace DataRemovalApp
 
             Log.CloseAndFlush();
             Console.ReadLine();
+            
         }
 
         static void RemoveOldestData(MySqlConnection connection, Config config)
         {
+            DateTime formattedDate = FormatDateTime(config.BaseDate);
+
             string query = $"DELETE FROM {config.DBName}.{config.TableName} WHERE {config.ColumnName} < DATE_ADD(@base_date, INTERVAL -@months_before MONTH)";
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
-                command.Parameters.AddWithValue("@base_date", config.BaseDate.ToString("yyyy-MM-dd"));
+                command.Parameters.AddWithValue("@base_date", formattedDate);
                 command.Parameters.AddWithValue("@months_before", config.MonthsBefore);
                 command.ExecuteNonQuery();
             }
+        }
+
+        public static DateTime FormatDateTime(DateTime dateTime)
+        {
+            string formattedDateStr = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+            DateTime formattedDate = DateTime.ParseExact(formattedDateStr, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+            return formattedDate;
         }
 
         static string GetConnectionString(Config config)
